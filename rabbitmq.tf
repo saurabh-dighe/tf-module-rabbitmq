@@ -16,7 +16,6 @@ resource "aws_spot_instance_request" "rabbitmq" {
 resource "aws_instance_tags" "web_server" {
   # ... other instance configuration options
   spot_instance_id = aws_spot_instance_request.rabbitmq.spot_instance_id
-
   tags = {
     Name = "roboshop-${var.ENV}-rabbitmq"
   }
@@ -24,7 +23,6 @@ resource "aws_instance_tags" "web_server" {
 
 resource "null_resource" "remote_provisioner" {
   # Establishes connection to be used by all
-
   connection {
     type     = "ssh"
     user     = "centos" 
