@@ -9,6 +9,15 @@ resource "aws_spot_instance_request" "rabbitmq" {
   wait_for_fulfillment    = true
 
   tags = {
+    Name = "roboshop-${var.ENV}-rabbitmq-spot-request"
+  }
+}
+
+resource "aws_instance_tags" "web_server" {
+  # ... other instance configuration options
+  spot_instance_id = aws_spot_instance_request.rabbitmq.spot_instance_id
+
+  tags = {
     Name = "roboshop-${var.ENV}-rabbitmq"
   }
 }
