@@ -12,3 +12,12 @@ data "aws_ami" "custom_ami" {
   name_regex       = "Ansible-AMI"
   owners           = ["058264375008"]
 }
+
+data "aws_secretsmanager_secret" "roboshop_secrets" {
+  name      = "roboshop/secrets"            
+}
+
+#Extracting the sectrets
+data "aws_secretsmanager_secret_version" "secret_version" {
+  secret_id = data.aws_secretsmanager_secret.roboshop_secrets.id
+}
