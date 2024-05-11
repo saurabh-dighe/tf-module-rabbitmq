@@ -13,10 +13,10 @@ resource "aws_spot_instance_request" "rabbitmq" {
   }
 }
 
-resource "aws_instance_tags" "web_server" {
+resource "aws_spot_instance_tag" "web_server" {
   # ... other instance configuration options
-  instance_id = aws_spot_instance_request.rabbitmq.spot_instance_id
-  tags = {
+  instance_id = aws_spot_instance_request.rabbitmq.id
+    tags = {
     Name = "roboshop-${var.ENV}-rabbitmq"
   }
 }
