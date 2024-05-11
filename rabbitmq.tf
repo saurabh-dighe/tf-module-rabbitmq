@@ -13,12 +13,11 @@ resource "aws_spot_instance_request" "rabbitmq" {
   }
 }
 
-resource "aws_spot_instance_tag" "web_server" {
+resource "aws_ec2_tag" "web_server" {
   # ... other instance configuration options
-  instance_id = aws_spot_instance_request.rabbitmq.id
-    tags = {
-    Name = "roboshop-${var.ENV}-rabbitmq"
-  }
+  resource_id  = aws_spot_instance_request.rabbitmq.spot_instance_id
+  key         = "Name"
+  value       = "roboshop-${var.ENV}-rabbitmq"
 }
 
 resource "null_resource" "remote_provisioner" {
