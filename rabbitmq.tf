@@ -3,7 +3,7 @@
 # Provisions a spot instance for rabbitmq
 resource "aws_spot_instance_request" "rabbitmq" {
   ami                     = data.aws_ami.custom_ami.id
-  instance_type           = "t3.medium"
+  instance_type           = var.RABIIT_MQ_INSTANCE_TYPE
   subnet_id               = data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNET_ID[0]
   vpc_security_group_ids  = [aws_security_group.allow_rabbitmq.id]
   wait_for_fulfillment    = true
