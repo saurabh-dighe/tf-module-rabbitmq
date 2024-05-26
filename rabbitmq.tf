@@ -1,5 +1,3 @@
-#Provisions RDS instance
-
 # Provisions a spot instance for rabbitmq
 resource "aws_spot_instance_request" "rabbitmq" {
   ami                     = data.aws_ami.custom_ami.id
