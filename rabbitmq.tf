@@ -22,8 +22,8 @@ resource "null_resource" "remote_provisioner" {
   # Establishes connection to be used by all
   connection {
     type     = "ssh"
-    user     = local.SSH_USERNAME
-    password = local.SSH_PASSWORD
+    user     = "centos" #local.SSH_USERNAME
+    password = "DevOps321" #local.SSH_PASSWORD
     host     = aws_spot_instance_request.rabbitmq.private_ip
   }
 
