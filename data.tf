@@ -13,11 +13,11 @@ data "aws_ami" "custom_ami" {
   owners           = ["992382386864"]
 }
 
-# data "aws_secretsmanager_secret" "roboshop_secrets" {
-#   name      = "roboshop/secrets"            
-# }
+data "aws_secretsmanager_secret" "roboshop_secrets" {
+  name      = "roboshop_secrets"            
+}
 
-# #Extracting the sectrets
-# data "aws_secretsmanager_secret_version" "secret_version" {
-#   secret_id = data.aws_secretsmanager_secret.roboshop_secrets.id
-# }
+#Extracting the sectrets
+data "aws_secretsmanager_secret_version" "secret_version" {
+  secret_id = data.aws_secretsmanager_secret.roboshop_secrets.id
+}
