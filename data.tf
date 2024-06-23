@@ -9,8 +9,8 @@ data "terraform_remote_state" "vpc" {
 
 data "aws_ami" "custom_ami" {
   most_recent      = true
-  name_regex       = "Ansible-AMI"
-  owners           = ["767397841012"]
+  name_regex       = "Base-AMI-Ansible"
+  owners           = ["992382386864"]
 }
 
 # data "aws_secretsmanager_secret" "roboshop_secrets" {
